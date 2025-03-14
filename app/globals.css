@@ -9,7 +9,7 @@
     }
 
     body {
-        @apply text-white bg-slate-900 relative;
+        @apply text-white bg-gradient-to-r from-slate-500 to-slate-800 relative;
     }
 
     button {
