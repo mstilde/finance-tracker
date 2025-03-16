@@ -5,7 +5,7 @@ import ExpenseCategoryItem from "@/components/ExpenseCategoryItem";
 import AddIncomeModal from '@/components/modals/AddIncomeModal';
 import AddExpensesModal from "@/components/modals/AddExpensesModal";
 import SignIn from "@/components/SignIn";
-import DateFilter from "@/components/modals/DateFilterModal";
+// import DateFilter from "@/components/modals/DateFilterModal";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -20,18 +20,20 @@ export default function Home() {
   const [showAddIncomeModal, setShowAddIncomeModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [balance, setBalance] = useState(0)
+  /*
   const [isFiltered, setIsFiltered] = useState(false);
+*/
 
   const { 
     expenses,
     income,
-    filteredExpenses,
+/*    filteredExpenses,
     filteredIncome,
     filterByDate,
-    dateRange
+    dateRange */
   } = useContext(financeContext);
   const { user, loading } = useContext(authContext);
-
+/*
   const handleDateFilterChange = (startDate, endDate) => {
     filterByDate(startDate, endDate);
     setIsFiltered(true);
@@ -40,7 +42,7 @@ export default function Home() {
   const clearFilter = () => {
     setIsFiltered(false);
   }
-
+*/
 useEffect(() => {
   const newBalance = income.reduce((total, i) => {
     return total + i.amount;
