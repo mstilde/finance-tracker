@@ -1,12 +1,11 @@
 "use client";
 
 import { currencyFormatter } from "@/lib/utils";
-
 import ExpenseCategoryItem from "@/components/ExpenseCategoryItem";
-
 import AddIncomeModal from '@/components/modals/AddIncomeModal';
 import AddExpensesModal from "@/components/modals/AddExpensesModal";
 import SignIn from "@/components/SignIn";
+import DateFilter from "@/components/modals/DateFilterModal";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -15,19 +14,32 @@ import { useState, useContext, useEffect } from "react";
 import { financeContext } from "@/lib/store/finance-context";
 import { authContext } from "@/lib/store/auth-context";
 
-
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Home() {
+  const [showAddIncomeModal, setShowAddIncomeModal] = useState(false);
+  const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
+  const [balance, setBalance] = useState(0)
+  const [isFiltered, setIsFiltered] = useState(false);
 
-const [showAddIncomeModal, setShowAddIncomeModal] = useState(false);
-const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
+  const { 
+    expenses,
+    income,
+    filteredExpenses,
+    filteredIncome,
+    filterByDate,
+    dateRange
+  } = useContext(financeContext);
+  const { user, loading } = useContext(authContext);
 
-const [balance, setBalance] = useState(0)
+  const handleDateFilterChange = (startDate, endDate) => {
+    filterByDate(startDate, endDate);
+    setIsFiltered(true);
+  }
 
-const { expenses, income } = useContext(financeContext);
-const { user, loading } = useContext(authContext);
+  const clearFilter = () => {
+    setIsFiltered(false);
+  }
 
 useEffect(() => {
   const newBalance = income.reduce((total, i) => {
