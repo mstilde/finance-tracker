@@ -43,12 +43,12 @@ function ViewExpenseModal({ show, onClose, expense }) {
     return (
         <Modal show={show} onClose={onClose}>
             <div className="flex items-center justify-between">
-                <h2 className="text-4xl">{expense.title}</h2>
+                <h2 className="text-3xl">{expense.title}</h2>
                 <button onClick={deleteExpenseHandler} className="btn btn-danger">Borrar</button>
             </div>
 
             <div>
-                <h3 className="my-4 text-2xl">Historial de egreso</h3>
+                <h3 className="my-4 text-xl">Historial de egreso</h3>
                 {expense.items.map((item) => {
                     return (
                         <div key={item.id} className="flex items-center justify-between">

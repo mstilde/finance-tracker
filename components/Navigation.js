@@ -20,7 +20,7 @@ function Nav() {
               referrerPolicy="no-referrer"
               />
             </div>
-            <small>Buenas {user.displayName}</small>
+            <small>Hola {user.displayName}</small>
           </div>
           )}
 

@@ -51,7 +51,7 @@ function DateFilter({ onFilterChange }) {
     };
     
     return (
-        <div className="my-4 p-4 bg-slate-800 rounded-xl">
+        <div className="my-4 px-4 py-3 bg-slate-800 rounded-xl">
             <h3 className="text-xl mb-4">Filtrar por fecha:</h3>
             <div className="flex gap-2 mb-4">
                 <button

@@ -34,7 +34,7 @@ function AddIncomeModal({show,onClose}){
             await addIncomeItem(newIncome)
             descriptionRef.current.value = "";
             amountRef.current.value = "";
-            toast.success("Ingreso creado con exito");
+            toast.success("Ingreso creado con éxito");
         } catch (error) {
             console.log(error.message);
             toast.error(error.message);
@@ -45,7 +45,7 @@ function AddIncomeModal({show,onClose}){
       const deleteIncomeEntryHandler = async (incomeId) => {
         try {
             await removeIncomeItem(incomeId);
-            toast.success("Ingreso eliminado con exito");
+            toast.success("Ingreso eliminado con éxito");
         } catch (error) {
             console.log(error.message);
             toast.error(error.message);
@@ -57,16 +57,16 @@ function AddIncomeModal({show,onClose}){
         <form onSubmit={addIncomeHandler} className="flex flex-col gap-4">
           <div className="input-group">
             <label htmlFor="amount">Cantidad ingreso</label>
-            <input type="number" name="amount" ref={amountRef} min={0.01} step={0.01} placeholder="Ingresar cantidad ingreso" required></input>
+            <input type="number" name="amount" ref={amountRef} min={0.01} step={0.01} placeholder="ej. 100.00" required></input>
           </div>
           <div className="input-group">
             <label htmlFor="description">Descripción</label>
-            <input type="text" name="description" ref={descriptionRef} placeholder="Ingresar descripción ingreso" required></input>
+            <input type="text" name="description" ref={descriptionRef} placeholder="ej. Sueldo mensual" required></input>
           </div>
           <button type="submit" className="btn btn-primary">Añadir</button>
         </form>
         <div className="flex flex-col gap-4 mt-6">
-          <h3 className="text-2xl font-bold">Historial de ingresos</h3>
+          <h3 className="text-xl font-bold">Historial de ingresos</h3>
   
           {income.map(i => {
             return (
